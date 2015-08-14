@@ -206,7 +206,7 @@ module MCollective
         args[:signal_daemon] = false if MCollective::Util.windows?
 
         # we can only pass splay arguments if the daemon isn't in signal mode :(
-        signal_daemon = Util.str_to_bool(@config.pluginconf.fetch("puppet.signal_daemon","true")) 
+        signal_daemon = Util.str_to_bool(@config.pluginconf.fetch("puppet.signal_daemon","false")) 
         unless @puppet_agent.status[:daemon_present] && signal_daemon
           if request[:force] == true
             # forcing implies --no-splay
